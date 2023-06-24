@@ -5,22 +5,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-public class Namespace
+public class Namespace : NamedCodeFileBase
 {
    #region Constructors and Destructors
 
-   public Namespace(string name, string body, IEnumerable<Namespace> namespaces, IReadOnlyList<TypeDeclaration> types, IReadOnlyList<Using> usings)
+   public Namespace(string name, string header, string body, IEnumerable<Namespace> namespaces, IReadOnlyList<TypeDeclaration> types,
+      IReadOnlyList<Using> usings)
+      : base(name, header, body)
    {
-      if (string.IsNullOrWhiteSpace(name))
-      {
-         throw new ArgumentException("Value cannot be null or whitespace.", nameof(name));
-      }
-
-      if (string.IsNullOrWhiteSpace(body))
-      {
-         throw new ArgumentException("Value cannot be null or whitespace.", nameof(body));
-      }
-
       if (namespaces == null)
       {
          throw new ArgumentNullException(nameof(namespaces));
@@ -36,8 +28,6 @@ public class Namespace
          throw new ArgumentNullException(nameof(usings));
       }
 
-      Name = name;
-      Body = body;
       Usings = new ReadOnlyCollection<Using>(usings.ToArray());
       Types = new ReadOnlyCollection<TypeDeclaration>(types.ToArray());
       Namespaces = new ReadOnlyCollection<Namespace>(namespaces.ToArray());
@@ -46,10 +36,6 @@ public class Namespace
    #endregion
 
    #region Public Properties
-
-   public string Body { get; }
-
-   public string Name { get; }
 
    public IReadOnlyList<Namespace> Namespaces { get; }
 

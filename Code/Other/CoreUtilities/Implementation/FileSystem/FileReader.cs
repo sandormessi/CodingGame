@@ -7,125 +7,159 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
 using CoreUtilities.Abstraction.FileSystem;
+using CoreUtilities.Abstraction.FileSystem.Factories;
 
 public class FileReader : IFileReader
 {
-    #region Constants and Fields
+   #region Constants and Fields
 
-    private const int BufferSize = 1024 * 1024 * 16;
+   private const int BufferSize = 1024 * 1024 * 16;
 
-    #endregion
+   private readonly IFileStreamFactory fileStreamFactory;
 
-    #region IFileReader Members
+   private readonly IStreamReaderFactory streamReaderFactory;
 
-    public IReadOnlyList<byte> ReadAllBytesFromFile(string filePath)
-    {
-        if (string.IsNullOrWhiteSpace(filePath))
-        {
-            throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
-        }
+   #endregion
 
-        return File.ReadAllBytes(filePath);
-    }
+   #region Constructors and Destructors
 
-    public Task<IReadOnlyList<byte>> ReadAllBytesFromFileAsync(string filePath)
-    {
-        if (string.IsNullOrWhiteSpace(filePath))
-        {
-            throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
-        }
+   public FileReader(IFileStreamFactory fileStreamFactory, IStreamReaderFactory streamReaderFactory)
+   {
+      this.fileStreamFactory = fileStreamFactory ?? throw new ArgumentNullException(nameof(fileStreamFactory));
+      this.streamReaderFactory = streamReaderFactory ?? throw new ArgumentNullException(nameof(streamReaderFactory));
+   }
 
-        return ReadAllBytesFromFileAsync(filePath, CancellationToken.None);
-    }
+   #endregion
 
-    public async Task<IReadOnlyList<byte>> ReadAllBytesFromFileAsync(string filePath, CancellationToken cancellationToken)
-    {
-        if (string.IsNullOrWhiteSpace(filePath))
-        {
-            throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
-        }
+   #region IFileReader Members
 
-        var fileStream = CreateFileStream(filePath);
-        var buffer = new byte[BufferSize];
+   public IReadOnlyList<byte> ReadAllBytesFromFile(string filePath)
+   {
+      if (string.IsNullOrWhiteSpace(filePath))
+      {
+         throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
+      }
 
-        List<byte> bytesRead = new((int)fileStream.Length);
+      var fileStream = CreateFileStream(filePath);
+      var buffer = new byte[BufferSize];
 
-        var byteRead = await fileStream.ReadAsync(buffer, cancellationToken).ConfigureAwait(false);
+      List<byte> bytesRead = new((int)fileStream.Length);
 
-        while (byteRead > 0)
-        {
-            bytesRead.AddRange(buffer);
-            byteRead = await fileStream.ReadAsync(buffer, cancellationToken).ConfigureAwait(false);
-        }
+      var byteRead = fileStream.Read(buffer);
 
-        return new ReadOnlyCollection<byte>(bytesRead);
-    }
+      while (byteRead > 0)
+      {
+         bytesRead.AddRange(buffer);
+         byteRead = fileStream.Read(buffer);
+      }
 
-    public string ReadAllTextFromFile(string filePath)
-    {
-        return ReadAllTextFromFile(filePath, Encoding.UTF8);
-    }
+      return new ReadOnlyCollection<byte>(bytesRead);
+   }
 
-    public string ReadAllTextFromFile(string filePath, Encoding encoding)
-    {
-        if (encoding == null)
-        {
-            throw new ArgumentNullException(nameof(encoding));
-        }
+   public Task<IReadOnlyList<byte>> ReadAllBytesFromFileAsync(string filePath)
+   {
+      if (string.IsNullOrWhiteSpace(filePath))
+      {
+         throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
+      }
 
-        if (string.IsNullOrWhiteSpace(filePath))
-        {
-            throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
-        }
+      return ReadAllBytesFromFileAsync(filePath, CancellationToken.None);
+   }
 
-        return File.ReadAllText(filePath, encoding);
-    }
+   public async Task<IReadOnlyList<byte>> ReadAllBytesFromFileAsync(string filePath, CancellationToken cancellationToken)
+   {
+      if (string.IsNullOrWhiteSpace(filePath))
+      {
+         throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
+      }
 
-    public Task<string> ReadAllTextFromFileAsync(string filePath)
-    {
-        return ReadAllTextFromFileAsync(filePath, Encoding.UTF8, CancellationToken.None);
-    }
+      var fileStream = CreateFileStream(filePath);
+      var buffer = new byte[BufferSize];
 
-    public Task<string> ReadAllTextFromFileAsync(string filePath, CancellationToken cancellationToken)
-    {
-        return ReadAllTextFromFileAsync(filePath, Encoding.UTF8, cancellationToken);
-    }
+      List<byte> bytesRead = new((int)fileStream.Length);
 
-    public Task<string> ReadAllTextFromFileAsync(string filePath, Encoding encoding)
-    {
-        return ReadAllTextFromFileAsync(filePath, Encoding.UTF8, CancellationToken.None);
-    }
+      var byteRead = await fileStream.ReadAsync(buffer, cancellationToken).ConfigureAwait(false);
 
-    public async Task<string> ReadAllTextFromFileAsync(string filePath, Encoding encoding, CancellationToken cancellationToken)
-    {
-        if (encoding == null)
-        {
-            throw new ArgumentNullException(nameof(encoding));
-        }
+      while (byteRead > 0)
+      {
+         bytesRead.AddRange(buffer);
+         byteRead = await fileStream.ReadAsync(buffer, cancellationToken).ConfigureAwait(false);
+      }
 
-        if (string.IsNullOrWhiteSpace(filePath))
-        {
-            throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
-        }
+      return new ReadOnlyCollection<byte>(bytesRead);
+   }
 
-        var fileStream = CreateFileStream(filePath);
-        var encodedFileReader = new StreamReader(fileStream, encoding);
+   public string ReadAllTextFromFile(string filePath)
+   {
+      return ReadAllTextFromFile(filePath, Encoding.UTF8);
+   }
 
-        var content = await encodedFileReader.ReadToEndAsync().ConfigureAwait(false);
+   public string ReadAllTextFromFile(string filePath, Encoding encoding)
+   {
+      if (encoding == null)
+      {
+         throw new ArgumentNullException(nameof(encoding));
+      }
 
-        return content;
-    }
+      if (string.IsNullOrWhiteSpace(filePath))
+      {
+         throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
+      }
 
-    #endregion
+      var fileStream = CreateFileStream(filePath);
+      var encodedFileReader = streamReaderFactory.CreateReader(fileStream, encoding);
 
-    #region Methods
+      var content = encodedFileReader.ReadToEnd();
 
-    private static FileStream CreateFileStream(string filePath)
-    {
-        var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-        return fileStream;
-    }
+      return content;
+   }
 
-    #endregion
+   public Task<string> ReadAllTextFromFileAsync(string filePath)
+   {
+      return ReadAllTextFromFileAsync(filePath, Encoding.UTF8, CancellationToken.None);
+   }
+
+   public Task<string> ReadAllTextFromFileAsync(string filePath, CancellationToken cancellationToken)
+   {
+      return ReadAllTextFromFileAsync(filePath, Encoding.UTF8, cancellationToken);
+   }
+
+   public Task<string> ReadAllTextFromFileAsync(string filePath, Encoding encoding)
+   {
+      return ReadAllTextFromFileAsync(filePath, Encoding.UTF8, CancellationToken.None);
+   }
+
+   public async Task<string> ReadAllTextFromFileAsync(string filePath, Encoding encoding, CancellationToken cancellationToken)
+   {
+      if (encoding == null)
+      {
+         throw new ArgumentNullException(nameof(encoding));
+      }
+
+      if (string.IsNullOrWhiteSpace(filePath))
+      {
+         throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
+      }
+
+      var fileStream = CreateFileStream(filePath);
+      var encodedFileReader = streamReaderFactory.CreateReader(fileStream, encoding);
+
+      var content = await encodedFileReader.ReadToEndAsync().ConfigureAwait(false);
+
+      return content;
+   }
+
+   #endregion
+
+   #region Methods
+
+   private Stream CreateFileStream(string filePath)
+   {
+      var fileStream = fileStreamFactory.CreateFileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+      return fileStream;
+   }
+
+   #endregion
 }

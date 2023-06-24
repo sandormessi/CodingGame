@@ -5,9 +5,9 @@ using System.IO;
 using System.Text;
 using CoreUtilities.Abstraction.FileSystem.Factories;
 
-public class StreamReaderFactory : IStreamReaderFactory
+public class TextReaderReaderFactory : ITextReaderReaderFactory
 {
-    public TextReader CreateReader(Stream baseStream, Encoding encoding)
+    public TextReader CreateTextReader(Stream baseStream, Encoding encoding)
     {
         if (baseStream == null)
         {
@@ -22,8 +22,8 @@ public class StreamReaderFactory : IStreamReaderFactory
         return new StreamReader(baseStream, encoding);
     }
 
-    public TextReader CreateReader(Stream baseStream)
+    public TextReader CreateTextReader(Stream baseStream)
     {
-        return CreateReader(baseStream, Encoding.UTF8);
+        return CreateTextReader(baseStream, Encoding.UTF8);
     }
 }

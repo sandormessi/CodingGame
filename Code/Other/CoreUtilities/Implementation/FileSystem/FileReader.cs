@@ -19,16 +19,16 @@ public class FileReader : IFileReader
 
    private readonly IFileStreamFactory fileStreamFactory;
 
-   private readonly IStreamReaderFactory streamReaderFactory;
+   private readonly ITextReaderReaderFactory textReaderReaderFactory;
 
    #endregion
 
    #region Constructors and Destructors
 
-   public FileReader(IFileStreamFactory fileStreamFactory, IStreamReaderFactory streamReaderFactory)
+   public FileReader(IFileStreamFactory fileStreamFactory, ITextReaderReaderFactory textReaderReaderFactory)
    {
       this.fileStreamFactory = fileStreamFactory ?? throw new ArgumentNullException(nameof(fileStreamFactory));
-      this.streamReaderFactory = streamReaderFactory ?? throw new ArgumentNullException(nameof(streamReaderFactory));
+      this.textReaderReaderFactory = textReaderReaderFactory ?? throw new ArgumentNullException(nameof(textReaderReaderFactory));
    }
 
    #endregion
@@ -109,7 +109,7 @@ public class FileReader : IFileReader
       }
 
       var fileStream = CreateFileStream(filePath);
-      var encodedFileReader = streamReaderFactory.CreateReader(fileStream, encoding);
+      var encodedFileReader = textReaderReaderFactory.CreateTextReader(fileStream, encoding);
 
       var content = encodedFileReader.ReadToEnd();
 
@@ -144,7 +144,7 @@ public class FileReader : IFileReader
       }
 
       var fileStream = CreateFileStream(filePath);
-      var encodedFileReader = streamReaderFactory.CreateReader(fileStream, encoding);
+      var encodedFileReader = textReaderReaderFactory.CreateTextReader(fileStream, encoding);
 
       var content = await encodedFileReader.ReadToEndAsync().ConfigureAwait(false);
 

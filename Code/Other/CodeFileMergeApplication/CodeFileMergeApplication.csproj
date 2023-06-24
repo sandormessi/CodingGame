@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<OutputType>Exe</OutputType>
+		<OutputType>WinExe</OutputType>
 		<TargetFramework>net6.0-windows</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>latest</LangVersion>
 		<UseWpf>true</UseWpf>
 		<Nullable>enable</Nullable>
+		<StartupObject>CodeFileMergeApplication.App</StartupObject>
 	</PropertyGroup>
 
 </Project>

@@ -1,29 +1,41 @@
 ﻿namespace CoreUtilities.Implementation.FileSystem.Factories;
 
-using System;
 using System.IO;
 using System.Text;
+
 using CoreUtilities.Abstraction.FileSystem.Factories;
 
 public class TextReaderReaderFactory : ITextReaderReaderFactory
 {
-    public TextReader CreateTextReader(Stream baseStream, Encoding encoding)
-    {
-        if (baseStream == null)
-        {
-            throw new ArgumentNullException(nameof(baseStream));
-        }
+   #region Constants and Fields
 
-        if (encoding == null)
-        {
-            throw new ArgumentNullException(nameof(encoding));
-        }
+   private static readonly Encoding DefaultEncoding = Encoding.UTF8;
 
-        return new StreamReader(baseStream, encoding);
-    }
+   private const bool DefaultLeaveOpen = false;
 
-    public TextReader CreateTextReader(Stream baseStream)
-    {
-        return CreateTextReader(baseStream, Encoding.UTF8);
-    }
+   #endregion
+
+   #region ITextReaderReaderFactory Members
+
+   public TextReader CreateTextReader(Stream baseStream, Encoding encoding)
+   {
+      return CreateTextReader(baseStream, encoding, DefaultLeaveOpen);
+   }
+
+   public TextReader CreateTextReader(Stream baseStream)
+   {
+      return CreateTextReader(baseStream, DefaultEncoding);
+   }
+
+   public TextReader CreateTextReader(Stream baseStream, Encoding encoding, bool leaveOpen)
+   {
+      return new StreamReader(baseStream, encoding, leaveOpen);
+   }
+
+   public TextReader CreateTextReader(Stream baseStream, bool leaveOpen)
+   {
+      return CreateTextReader(baseStream, DefaultEncoding, leaveOpen);
+   }
+
+   #endregion
 }

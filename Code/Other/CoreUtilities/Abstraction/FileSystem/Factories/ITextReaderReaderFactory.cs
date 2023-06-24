@@ -5,11 +5,15 @@ using System.Text;
 
 public interface ITextReaderReaderFactory
 {
-    #region Public Methods and Operators
+   #region Public Methods and Operators
 
-    TextReader CreateTextReader(Stream baseStream, Encoding encoding);
+   TextReader CreateTextReader(Stream baseStream, Encoding encoding);
 
-    TextReader CreateTextReader(Stream baseStream);
+   TextReader CreateTextReader(Stream baseStream);
 
-    #endregion
+   TextReader CreateTextReader(Stream baseStream, Encoding encoding, bool leaveOpen);
+
+   TextReader CreateTextReader(Stream baseStream, bool leaveOpen);
+
+   #endregion
 }

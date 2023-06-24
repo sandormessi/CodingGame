@@ -11,5 +11,9 @@ public interface ITextWriterFactory
 
    TextWriter CreateTextWriter(Stream baseStream);
 
+   TextWriter CreateTextWriter(Stream baseStream, Encoding encoding, bool leaveOpen);
+
+   TextWriter CreateTextWriter(Stream baseStream, bool leaveOpen);
+
    #endregion
 }

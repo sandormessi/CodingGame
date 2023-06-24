@@ -42,7 +42,7 @@ public class FileReader : IFileReader
          throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
       }
 
-      var fileStream = CreateFileStream(filePath);
+      using var fileStream = CreateFileStream(filePath);
       var buffer = new byte[BufferSize];
 
       List<byte> bytesRead = new((int)fileStream.Length);
@@ -75,7 +75,7 @@ public class FileReader : IFileReader
          throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
       }
 
-      var fileStream = CreateFileStream(filePath);
+      await using var fileStream = CreateFileStream(filePath);
       var buffer = new byte[BufferSize];
 
       List<byte> bytesRead = new((int)fileStream.Length);
@@ -108,8 +108,7 @@ public class FileReader : IFileReader
          throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
       }
 
-      var fileStream = CreateFileStream(filePath);
-      var encodedFileReader = textReaderReaderFactory.CreateTextReader(fileStream, encoding);
+      using var encodedFileReader = CreateEncodedFileReader(filePath, encoding);
 
       var content = encodedFileReader.ReadToEnd();
 
@@ -143,8 +142,7 @@ public class FileReader : IFileReader
          throw new ArgumentException("Value cannot be null or whitespace.", nameof(filePath));
       }
 
-      var fileStream = CreateFileStream(filePath);
-      var encodedFileReader = textReaderReaderFactory.CreateTextReader(fileStream, encoding);
+      using var encodedFileReader = CreateEncodedFileReader(filePath, encoding);
 
       var content = await encodedFileReader.ReadToEndAsync().ConfigureAwait(false);
 
@@ -154,6 +152,13 @@ public class FileReader : IFileReader
    #endregion
 
    #region Methods
+
+   private TextReader CreateEncodedFileReader(string filePath, Encoding encoding)
+   {
+      var fileStream = CreateFileStream(filePath);
+      var encodedFileReader = textReaderReaderFactory.CreateTextReader(fileStream, encoding);
+      return encodedFileReader;
+   }
 
    private Stream CreateFileStream(string filePath)
    {

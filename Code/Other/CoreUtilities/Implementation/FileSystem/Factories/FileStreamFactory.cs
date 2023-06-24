@@ -1,8 +1,8 @@
-﻿namespace CoreUtilities.Implementation.FileSystem;
+﻿namespace CoreUtilities.Implementation.FileSystem.Factories;
 
 using System.IO;
 
-using CoreUtilities.Abstraction.FileSystem;
+using CoreUtilities.Abstraction.FileSystem.Factories;
 
 public class FileStreamFactory : IFileStreamFactory
 {

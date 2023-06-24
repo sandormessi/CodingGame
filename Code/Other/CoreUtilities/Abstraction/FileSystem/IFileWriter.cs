@@ -9,11 +9,11 @@ public interface IFileWriter
 {
    #region Public Methods and Operators
 
-   void WriteAllBytes(IReadOnlyList<byte> bytesToWrite, string filePath, Encoding encoding);
+   void WriteAllBytes(IReadOnlyList<byte> bytesToWrite, string filePath);
 
-   Task WriteAllBytesAsync(IReadOnlyList<byte> bytesToWrite, string filePath, Encoding encoding);
+   Task WriteAllBytesAsync(IReadOnlyList<byte> bytesToWrite, string filePath);
 
-   Task WriteAllBytesAsync(IReadOnlyList<byte> bytesToWrite, string filePath, Encoding encoding, CancellationToken cancellationToken);
+   Task WriteAllBytesAsync(IReadOnlyList<byte> bytesToWrite, string filePath, CancellationToken cancellationToken);
 
    void WriteAllText(string text, string filePath, Encoding encoding);
 

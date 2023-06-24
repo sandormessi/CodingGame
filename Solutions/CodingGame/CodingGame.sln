@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFileMergeApplication", "..\\..\Code\Other\CodeFileMergeApplication\CodeFileMergeApplication.csproj", "{0CE16349-DC18-42AA-AF28-62B12A046C4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFileMergeApplication", "..\..\Code\Other\CodeFileMergeApplication\CodeFileMergeApplication.csproj", "{0CE16349-DC18-42AA-AF28-62B12A046C4A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{52194224-1DA6-4241-8174-AC5A759F5D29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFileMergeApplication.Core", "..\\..\Code\Other\CodeFileMergeApplication.Core\CodeFileMergeApplication.Core.csproj", "{6AE04718-98EC-4574-8D2B-876243BB63E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFileMergeApplication.Core", "..\..\Code\Other\CodeFileMergeApplication.Core\CodeFileMergeApplication.Core.csproj", "{6AE04718-98EC-4574-8D2B-876243BB63E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreUtilities", "..\..\Code\Other\CoreUtilities\CoreUtilities.csproj", "{D38A7949-F53D-4799-92C5-AB2BFA89A00E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{6AE04718-98EC-4574-8D2B-876243BB63E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AE04718-98EC-4574-8D2B-876243BB63E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AE04718-98EC-4574-8D2B-876243BB63E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D38A7949-F53D-4799-92C5-AB2BFA89A00E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D38A7949-F53D-4799-92C5-AB2BFA89A00E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D38A7949-F53D-4799-92C5-AB2BFA89A00E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D38A7949-F53D-4799-92C5-AB2BFA89A00E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +36,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{0CE16349-DC18-42AA-AF28-62B12A046C4A} = {52194224-1DA6-4241-8174-AC5A759F5D29}
 		{6AE04718-98EC-4574-8D2B-876243BB63E5} = {52194224-1DA6-4241-8174-AC5A759F5D29}
+		{D38A7949-F53D-4799-92C5-AB2BFA89A00E} = {52194224-1DA6-4241-8174-AC5A759F5D29}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E15B9976-2D3A-456F-B456-3EB7035295F6}

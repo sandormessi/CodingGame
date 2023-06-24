@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFileMergeApplication", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{52194224-1DA6-4241-8174-AC5A759F5D29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFileMergeApplication.Core", "..\Code\Other\CodeFileMergeApplication.Core\CodeFileMergeApplication.Core.csproj", "{6AE04718-98EC-4574-8D2B-876243BB63E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,17 @@ Global
 		{0CE16349-DC18-42AA-AF28-62B12A046C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CE16349-DC18-42AA-AF28-62B12A046C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CE16349-DC18-42AA-AF28-62B12A046C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AE04718-98EC-4574-8D2B-876243BB63E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AE04718-98EC-4574-8D2B-876243BB63E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AE04718-98EC-4574-8D2B-876243BB63E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AE04718-98EC-4574-8D2B-876243BB63E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0CE16349-DC18-42AA-AF28-62B12A046C4A} = {52194224-1DA6-4241-8174-AC5A759F5D29}
+		{6AE04718-98EC-4574-8D2B-876243BB63E5} = {52194224-1DA6-4241-8174-AC5A759F5D29}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E15B9976-2D3A-456F-B456-3EB7035295F6}

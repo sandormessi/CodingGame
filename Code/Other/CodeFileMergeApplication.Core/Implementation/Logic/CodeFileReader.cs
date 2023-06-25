@@ -19,6 +19,8 @@ public class CodeFileReader : ICodeFileReader
 {
    #region Constants and Fields
 
+   private const string UnknownFilePath = "<Unknown>";
+
    private readonly IFileReader fileReader;
 
    #endregion
@@ -53,7 +55,7 @@ public class CodeFileReader : ICodeFileReader
          throw new ArgumentException("Value cannot be null or whitespace.", nameof(fileContent));
       }
 
-      return ReadCodeFileFromString(fileContent, "<Unknown>");
+      return ReadCodeFileFromString(fileContent, UnknownFilePath);
    }
 
    public Task<CodeFile> ReadFromStringAsync(string fileContent, CancellationToken cancellationToken)
@@ -63,7 +65,7 @@ public class CodeFileReader : ICodeFileReader
          throw new ArgumentException("Value cannot be null or whitespace.", nameof(fileContent));
       }
 
-      return ReadCodeFileFromStringAsync(fileContent, "<Unknown>", cancellationToken);
+      return ReadCodeFileFromStringAsync(fileContent, UnknownFilePath, cancellationToken);
    }
 
    public Task<CodeFile> ReadFromFileAsync(string filePath)

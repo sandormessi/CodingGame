@@ -9,8 +9,8 @@ public class TypeDeclaration : NamedCodeFileBase
 {
    #region Constructors and Destructors
 
-   public TypeDeclaration(string name, string header, string body, IEnumerable<TypeDeclaration> embeddedTypes)
-      : base(name, header, body)
+   public TypeDeclaration(string name, string body, IEnumerable<TypeDeclaration> embeddedTypes)
+      : base(name, body)
    {
       if (embeddedTypes == null)
       {

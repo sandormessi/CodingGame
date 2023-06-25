@@ -9,9 +9,8 @@ public class Namespace : NamedCodeFileBase
 {
    #region Constructors and Destructors
 
-   public Namespace(string name, string header, string body, IEnumerable<Namespace> namespaces, IReadOnlyList<TypeDeclaration> types,
-      IReadOnlyList<Using> usings)
-      : base(name, header, body)
+   public Namespace(string name, string body, IEnumerable<Namespace> namespaces, IReadOnlyList<TypeDeclaration> types, IReadOnlyList<Using> usings)
+      : base(name, body)
    {
       if (namespaces == null)
       {

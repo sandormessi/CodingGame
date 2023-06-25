@@ -5,7 +5,7 @@ using System.Text;
 
 using CoreUtilities.Abstraction.FileSystem.Factories;
 
-public class TextWriterFactory : ITextWriterFactory
+public class StreamTextWriterFactory : IStreamTextWriterFactory
 {
    #region Constants and Fields
 
@@ -17,7 +17,7 @@ public class TextWriterFactory : ITextWriterFactory
 
    #endregion
 
-   #region ITextWriterFactory Members
+   #region IStreamTextWriterFactory Members
 
    public TextWriter CreateTextWriter(Stream baseStream, Encoding encoding)
    {

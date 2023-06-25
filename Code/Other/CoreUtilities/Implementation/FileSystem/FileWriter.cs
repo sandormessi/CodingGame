@@ -19,16 +19,16 @@ public class FileWriter : IFileWriter
 
    private readonly IFileStreamFactory fileStreamFactory;
 
-   private readonly ITextWriterFactory textWriterFactory;
+   private readonly IStreamTextWriterFactory streamTextWriterFactory;
 
    #endregion
 
    #region Constructors and Destructors
 
-   public FileWriter(IFileStreamFactory fileStreamFactory, ITextWriterFactory textWriterFactory)
+   public FileWriter(IFileStreamFactory fileStreamFactory, IStreamTextWriterFactory streamTextWriterFactory)
    {
       this.fileStreamFactory = fileStreamFactory ?? throw new ArgumentNullException(nameof(fileStreamFactory));
-      this.textWriterFactory = textWriterFactory ?? throw new ArgumentNullException(nameof(textWriterFactory));
+      this.streamTextWriterFactory = streamTextWriterFactory ?? throw new ArgumentNullException(nameof(streamTextWriterFactory));
    }
 
    #endregion
@@ -135,7 +135,7 @@ public class FileWriter : IFileWriter
    private TextWriter CreateEncodedStreamWriter(string filePath, Encoding encoding)
    {
       var fileStream = CreateFileStream(filePath);
-      var encodedStreamWriter = textWriterFactory.CreateTextWriter(fileStream, encoding, false);
+      var encodedStreamWriter = streamTextWriterFactory.CreateTextWriter(fileStream, encoding, false);
       return encodedStreamWriter;
    }
 

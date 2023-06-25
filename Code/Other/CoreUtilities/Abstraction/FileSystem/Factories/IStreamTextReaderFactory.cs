@@ -3,7 +3,7 @@
 using System.IO;
 using System.Text;
 
-public interface ITextReaderReaderFactory
+public interface IStreamTextReaderFactory
 {
    #region Public Methods and Operators
 

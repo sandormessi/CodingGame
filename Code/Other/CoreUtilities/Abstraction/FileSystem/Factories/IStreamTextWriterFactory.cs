@@ -3,7 +3,7 @@
 using System.IO;
 using System.Text;
 
-public interface ITextWriterFactory
+public interface IStreamTextWriterFactory
 {
    #region Public Methods and Operators
 

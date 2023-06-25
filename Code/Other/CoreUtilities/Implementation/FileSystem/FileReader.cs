@@ -19,16 +19,16 @@ public class FileReader : IFileReader
 
    private readonly IFileStreamFactory fileStreamFactory;
 
-   private readonly ITextReaderReaderFactory textReaderReaderFactory;
+   private readonly IStreamTextReaderFactory streamTextReaderFactory;
 
    #endregion
 
    #region Constructors and Destructors
 
-   public FileReader(IFileStreamFactory fileStreamFactory, ITextReaderReaderFactory textReaderReaderFactory)
+   public FileReader(IFileStreamFactory fileStreamFactory, IStreamTextReaderFactory streamTextReaderFactory)
    {
       this.fileStreamFactory = fileStreamFactory ?? throw new ArgumentNullException(nameof(fileStreamFactory));
-      this.textReaderReaderFactory = textReaderReaderFactory ?? throw new ArgumentNullException(nameof(textReaderReaderFactory));
+      this.streamTextReaderFactory = streamTextReaderFactory ?? throw new ArgumentNullException(nameof(streamTextReaderFactory));
    }
 
    #endregion
@@ -156,7 +156,7 @@ public class FileReader : IFileReader
    private TextReader CreateEncodedFileReader(string filePath, Encoding encoding)
    {
       var fileStream = CreateFileStream(filePath);
-      var encodedFileReader = textReaderReaderFactory.CreateTextReader(fileStream, encoding);
+      var encodedFileReader = streamTextReaderFactory.CreateTextReader(fileStream, encoding);
       return encodedFileReader;
    }
 

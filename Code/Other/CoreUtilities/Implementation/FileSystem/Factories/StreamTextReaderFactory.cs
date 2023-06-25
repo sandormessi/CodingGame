@@ -5,7 +5,7 @@ using System.Text;
 
 using CoreUtilities.Abstraction.FileSystem.Factories;
 
-public class TextReaderReaderFactory : ITextReaderReaderFactory
+public class StreamTextReaderFactory : IStreamTextReaderFactory
 {
    #region Constants and Fields
 
@@ -15,7 +15,7 @@ public class TextReaderReaderFactory : ITextReaderReaderFactory
 
    #endregion
 
-   #region ITextReaderReaderFactory Members
+   #region IStreamTextReaderFactory Members
 
    public TextReader CreateTextReader(Stream baseStream, Encoding encoding)
    {

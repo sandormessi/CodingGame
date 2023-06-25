@@ -6,27 +6,27 @@ public class NamedCodeFileBase
 {
    #region Constructors and Destructors
 
-   public NamedCodeFileBase(string name, string content)
+   public NamedCodeFileBase(string name, string definition)
    {
       if (string.IsNullOrWhiteSpace(name))
       {
          throw new ArgumentException("Value cannot be null or whitespace.", nameof(name));
       }
 
-      if (string.IsNullOrWhiteSpace(content))
+      if (string.IsNullOrWhiteSpace(definition))
       {
-         throw new ArgumentException("Value cannot be null or whitespace.", nameof(content));
+         throw new ArgumentException("Value cannot be null or whitespace.", nameof(definition));
       }
 
       Name = name;
-      Content = content;
+      Definition = definition;
    }
 
    #endregion
 
    #region Public Properties
 
-   public string Content { get; }
+   public string Definition { get; }
 
    public string Name { get; }
 

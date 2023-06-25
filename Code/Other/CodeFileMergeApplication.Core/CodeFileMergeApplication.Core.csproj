@@ -7,7 +7,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\CoreUtilities\CoreUtilities.csproj" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.6.0"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CoreUtilities\CoreUtilities.csproj"/>
 	</ItemGroup>
 
 </Project>

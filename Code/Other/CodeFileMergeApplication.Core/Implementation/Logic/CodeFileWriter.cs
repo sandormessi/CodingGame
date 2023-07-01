@@ -74,20 +74,7 @@ public class CodeFileWriter : ICodeFileWriter
 
    private static string CreateTextToWrite(CodeFile codeFile)
    {
-      StringBuilder codeFileTextStringBuilder = new(InitialStringBuilderCapacity);
-
-      foreach (var codeFileUsing in codeFile.Usings)
-      {
-         codeFileTextStringBuilder.Append(codeFileUsing.UsingString);
-      }
-
-      foreach (var codeFileNamespace in codeFile.Namespaces)
-      {
-         codeFileTextStringBuilder.Append(codeFileNamespace.Definition);
-      }
-
-      string codeFileText = codeFileTextStringBuilder.ToString();
-      return codeFileText;
+      return codeFile.Content;
    }
 
    #endregion

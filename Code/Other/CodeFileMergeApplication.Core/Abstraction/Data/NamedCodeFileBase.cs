@@ -6,7 +6,7 @@ public class NamedCodeFileBase
 {
    #region Constructors and Destructors
 
-   public NamedCodeFileBase(string name, string definition)
+   protected NamedCodeFileBase(string name, string definition)
    {
       if (string.IsNullOrWhiteSpace(name))
       {

@@ -1,14 +1,13 @@
-﻿namespace Playground.CertificateTask
+﻿namespace Playground.CertificateTask;
+
+internal class FifthTask
 {
-   internal class FifthTask
+   #region Public Methods and Operators
+
+   public void Execute()
    {
-      #region Public Methods and Operators
-
-      public void Execute()
-      {
-         throw new NotImplementedException();
-      }
-
-      #endregion
+      throw new NotImplementedException();
    }
+
+   #endregion
 }

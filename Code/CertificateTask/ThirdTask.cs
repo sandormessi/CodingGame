@@ -1,14 +1,13 @@
-﻿namespace CertificateTask
+﻿namespace CertificateTask;
+
+internal class ThirdTask
 {
-   internal class ThirdTask
+   #region Public Methods and Operators
+
+   public void Execute()
    {
-      #region Public Methods and Operators
-
-      public void Execute()
-      {
-         throw new NotImplementedException();
-      }
-
-      #endregion
+      throw new NotImplementedException();
    }
+
+   #endregion
 }

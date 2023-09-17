@@ -10,7 +10,7 @@ internal class Game
 
    #region Public Methods and Operators
 
-   public void Execute()
+   public static void Execute()
    {
       var readLine = ReadInput();
 
@@ -19,17 +19,21 @@ internal class Game
 
       string[] inputs = line.Split(' ');
 
-      List<string> wordSet = new List<string>();
+      List<string> wordSet = new();
       for (int i = 0; i < wordCount; i++)
       {
          string word = inputs[i]; // Word in the word set
          wordSet.Add(word);
       }
 
-      IList<string> possibleWords = wordSet.ToList();
+      List<string> possibleWords = wordSet.ToList();
       string wordGuess = possibleWords.First();
 
-      IList<string> guessedWordsSoFar = new List<string>();
+      List<string> guessedWordsSoFar = new();
+
+      List<(char character, List<int> positionsChecked)> containAnyPosition = new();
+      List<(int position, char character)> containExactPosition = new();
+      List<char> notContains = new();
 
       int[] states = new int[WordLength];
       while (true)
@@ -43,7 +47,7 @@ internal class Game
             states[i] = state;
          }
 
-         possibleWords = ProcessStates(states, wordGuess, wordSet, possibleWords, guessedWordsSoFar);
+         possibleWords = ProcessStates(states, wordGuess, possibleWords, guessedWordsSoFar, containAnyPosition, containExactPosition, notContains);
 
          wordGuess = SelectWordToGuess(possibleWords);
 
@@ -57,9 +61,29 @@ internal class Game
 
    #region Methods
 
-   private static bool IsWordContainsCharacters(string word, IEnumerable<char> characters)
+   private static bool IsWordContainsCharacters(string word, IEnumerable<(char character, List<int> positionsChecked)> characters)
    {
-      return characters.All(word.Contains);
+      foreach (var (character, positionsChecked) in characters)
+      {
+         if (!word.Contains(character))
+         {
+            return false;
+         }
+
+         for (var index = 0; index < word.Length; index++)
+         {
+            var letter = word[index];
+            if (letter == character)
+            {
+               if (positionsChecked.Contains(index))
+               {
+                  return false;
+               }
+            }
+         }
+      }
+
+      return true;
    }
 
    private static bool IsWordContainsCharactersInExactPosition(string word, List<(int position, char character)> charactersAtExactPosition)
@@ -80,17 +104,31 @@ internal class Game
       return !characters.Any(word.Contains);
    }
 
-   private static IList<string> ProcessStates(IReadOnlyList<int> states, string wordGuess, IEnumerable<string> wordSet, IList<string> possibleWords,
-      IEnumerable<string> guessedWordsSoFar)
+   private static string ReadInput()
+   {
+      return Console.ReadLine() ?? throw new InvalidOperationException("There is no input.");
+   }
+
+   private static string SelectWordToGuess(IEnumerable<string> possibleWords)
+   {
+      var wordGuess = possibleWords.First();
+
+      return wordGuess;
+   }
+
+   private static void WriteWord(string wordGuess)
+   {
+      Console.WriteLine(wordGuess.ToUpper());
+   }
+
+   private static List<string> ProcessStates(IReadOnlyList<int> states, string wordGuess, List<string> possibleWords, IEnumerable<string> guessedWordsSoFar,
+      List<(char character, List<int> positionsChecked)> containAnyPosition, List<(int position, char character)> containExactPosition,
+      ICollection<char> notContains)
    {
       if (states.Any(x => x == 0))
       {
          return possibleWords;
       }
-
-      List<char> containAnyPosition = new();
-      List<(int position, char character)> containExactPosition = new();
-      List<char> notContains = new();
 
       for (var i = 0; i < states.Count; i++)
       {
@@ -109,7 +147,15 @@ internal class Game
                break;
             case 2:
 
-               containAnyPosition.Add(currentLetter);
+               var foundIndex = containAnyPosition.FindIndex(x => x.character == currentLetter);
+               if (foundIndex < 0)
+               {
+                  containAnyPosition.Add((currentLetter, new() { i }));
+               }
+               else
+               {
+                  containAnyPosition[foundIndex].positionsChecked.Add(i);
+               }
 
                break;
 
@@ -131,25 +177,6 @@ internal class Game
          .ToList();
 
       return possibleWords2;
-   }
-
-   private static string ReadInput()
-   {
-      return Console.ReadLine() ?? throw new InvalidOperationException("There is no input.");
-   }
-
-   private static string SelectWordToGuess(IEnumerable<string> possibleWords)
-   {
-      var wordGuess = possibleWords.First();
-
-
-
-      return wordGuess;
-   }
-
-   private static void WriteWord(string wordGuess)
-   {
-      Console.WriteLine(wordGuess.ToUpper());
    }
 
    #endregion

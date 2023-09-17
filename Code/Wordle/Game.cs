@@ -1,6 +1,6 @@
 ﻿namespace Wordle;
 
-internal class Game
+public class Game
 {
    #region Constants and Fields
 
@@ -10,11 +10,14 @@ internal class Game
 
    #region Public Methods and Operators
 
-   public static void Execute()
+   public static void Main()
    {
       var readLine = ReadInput();
 
-      int wordCount = int.Parse(readLine); // Number of words in the word set
+      int wordCount = int.Parse(readLine);
+
+      Console.Error.WriteLine(wordCount);
+
       var line = ReadInput();
 
       string[] inputs = line.Split(' ');
@@ -22,8 +25,8 @@ internal class Game
       List<string> wordSet = new();
       for (int i = 0; i < wordCount; i++)
       {
-         string word = inputs[i]; // Word in the word set
-         wordSet.Add(word);
+         string word = inputs[i];
+         wordSet.Add(word.ToUpper());
       }
 
       List<string> possibleWords = wordSet.ToList();
@@ -43,11 +46,19 @@ internal class Game
 
          for (var i = 0; i < states.Length; i++)
          {
-            int state = int.Parse(inputs[i]); // State of the letter of the corresponding position of previous guess
+            int state = int.Parse(inputs[i]);
             states[i] = state;
          }
 
-         possibleWords = ProcessStates(states, wordGuess, possibleWords, guessedWordsSoFar, containAnyPosition, containExactPosition, notContains);
+         var firstGuess = states.Any(x => x == 0);
+
+         possibleWords = ProcessStates(firstGuess, states, wordGuess, possibleWords, guessedWordsSoFar, containAnyPosition, containExactPosition,
+            notContains);
+
+         if (!firstGuess)
+         {
+            WriteWords(possibleWords);
+         }
 
          wordGuess = SelectWordToGuess(possibleWords);
 
@@ -104,28 +115,11 @@ internal class Game
       return !characters.Any(word.Contains);
    }
 
-   private static string ReadInput()
+   private static List<string> ProcessStates(bool firstGuess, IReadOnlyList<int> states, string wordGuess, List<string> possibleWords,
+      IEnumerable<string> guessedWordsSoFar, List<(char character, List<int> positionsChecked)> containAnyPosition,
+      List<(int position, char character)> containExactPosition, ICollection<char> notContains)
    {
-      return Console.ReadLine() ?? throw new InvalidOperationException("There is no input.");
-   }
-
-   private static string SelectWordToGuess(IEnumerable<string> possibleWords)
-   {
-      var wordGuess = possibleWords.First();
-
-      return wordGuess;
-   }
-
-   private static void WriteWord(string wordGuess)
-   {
-      Console.WriteLine(wordGuess.ToUpper());
-   }
-
-   private static List<string> ProcessStates(IReadOnlyList<int> states, string wordGuess, List<string> possibleWords, IEnumerable<string> guessedWordsSoFar,
-      List<(char character, List<int> positionsChecked)> containAnyPosition, List<(int position, char character)> containExactPosition,
-      ICollection<char> notContains)
-   {
-      if (states.Any(x => x == 0))
+      if (firstGuess)
       {
          return possibleWords;
       }
@@ -150,7 +144,7 @@ internal class Game
                var foundIndex = containAnyPosition.FindIndex(x => x.character == currentLetter);
                if (foundIndex < 0)
                {
-                  containAnyPosition.Add((currentLetter, new() { i }));
+                  containAnyPosition.Add((currentLetter, new List<int> { i }));
                }
                else
                {
@@ -170,13 +164,36 @@ internal class Game
       }
 
       var possibleWords2 = possibleWords
+         .Except(guessedWordsSoFar, StringComparer.CurrentCultureIgnoreCase)
          .Where(x => IsWordNotContainsCharacters(x, notContains))
          .Where(x => IsWordContainsCharacters(x, containAnyPosition))
          .Where(x => IsWordContainsCharactersInExactPosition(x, containExactPosition))
-         .Except(guessedWordsSoFar, StringComparer.CurrentCultureIgnoreCase)
          .ToList();
 
       return possibleWords2;
+   }
+
+   private static string ReadInput()
+   {
+      return Console.ReadLine() ?? throw new InvalidOperationException("There is no input.");
+   }
+
+   private static string SelectWordToGuess(IReadOnlyList<string> possibleWords)
+   {
+      return possibleWords.OrderByDescending(x => x.Distinct().Count()).ThenBy(x => x, StringComparer.CurrentCultureIgnoreCase).First();
+   }
+
+   private static void WriteWord(string wordGuess)
+   {
+      Console.WriteLine(wordGuess.ToUpper());
+   }
+
+   private static void WriteWords(IEnumerable<string> words)
+   {
+      foreach (var word in words)
+      {
+         Console.Error.WriteLine(word);
+      }
    }
 
    #endregion

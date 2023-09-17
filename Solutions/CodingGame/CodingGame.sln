@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playground", "..\..\Code\Pl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordle", "..\..\Code\Wordle\Wordle.csproj", "{0FF15906-BEE6-490D-B467-458E932CCA66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinterChallenge2023", "..\..\Code\WinterChallenge2023\WinterChallenge2023.csproj", "{915E6C55-0841-4E4E-BFE5-01FF9B988205}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0FF15906-BEE6-490D-B467-458E932CCA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FF15906-BEE6-490D-B467-458E932CCA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FF15906-BEE6-490D-B467-458E932CCA66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{915E6C55-0841-4E4E-BFE5-01FF9B988205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{915E6C55-0841-4E4E-BFE5-01FF9B988205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{915E6C55-0841-4E4E-BFE5-01FF9B988205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{915E6C55-0841-4E4E-BFE5-01FF9B988205}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

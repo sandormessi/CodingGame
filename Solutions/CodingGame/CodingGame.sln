@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CertificateTask", "..\..\Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playground", "..\..\Code\Playground\Playground.csproj", "{780D5126-0232-40F0-AFD6-B27C07C73C30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordle", "..\..\Code\Wordle\Wordle.csproj", "{0FF15906-BEE6-490D-B467-458E932CCA66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wordle", "..\..\Code\Wordle\Wordle.csproj", "{0FF15906-BEE6-490D-B467-458E932CCA66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinterChallenge2023", "..\..\Code\WinterChallenge2023\WinterChallenge2023.csproj", "{915E6C55-0841-4E4E-BFE5-01FF9B988205}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinterChallenge2023", "..\..\Code\WinterChallenge2023\WinterChallenge2023.csproj", "{915E6C55-0841-4E4E-BFE5-01FF9B988205}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowOfTheKnightEpisode1", "..\..\Code\ShadowOfTheKnightEpisode1\ShadowOfTheKnightEpisode1.csproj", "{63A84DF7-A655-4F2D-BCB7-C442ACE2A2D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{915E6C55-0841-4E4E-BFE5-01FF9B988205}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{915E6C55-0841-4E4E-BFE5-01FF9B988205}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{915E6C55-0841-4E4E-BFE5-01FF9B988205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63A84DF7-A655-4F2D-BCB7-C442ACE2A2D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63A84DF7-A655-4F2D-BCB7-C442ACE2A2D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63A84DF7-A655-4F2D-BCB7-C442ACE2A2D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63A84DF7-A655-4F2D-BCB7-C442ACE2A2D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

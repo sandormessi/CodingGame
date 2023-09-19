@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinterChallenge2023", "..\.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowOfTheKnightEpisode1", "..\..\Code\ShadowOfTheKnightEpisode1\ShadowOfTheKnightEpisode1.csproj", "{63A84DF7-A655-4F2D-BCB7-C442ACE2A2D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkCabling", "..\..\Code\NetworkCabling\NetworkCabling.csproj", "{9411395D-B2D7-4900-8B3A-B8BA1DB43CDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{63A84DF7-A655-4F2D-BCB7-C442ACE2A2D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63A84DF7-A655-4F2D-BCB7-C442ACE2A2D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63A84DF7-A655-4F2D-BCB7-C442ACE2A2D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9411395D-B2D7-4900-8B3A-B8BA1DB43CDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9411395D-B2D7-4900-8B3A-B8BA1DB43CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9411395D-B2D7-4900-8B3A-B8BA1DB43CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9411395D-B2D7-4900-8B3A-B8BA1DB43CDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

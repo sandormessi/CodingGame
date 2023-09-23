@@ -21,11 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsLanderEpisode1", "..\..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HorseRacingDuals", "..\..\Code\HorseRacingDuals\HorseRacingDuals.csproj", "{76A7982D-39C7-47C4-8E8E-62B17EE2B0B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MimeType", "..\..\Code\MimeType\MimeType.csproj", "{42757165-13EA-41F9-830A-4A50834B68D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MimeType", "..\..\Code\MimeType\MimeType.csproj", "{42757165-13EA-41F9-830A-4A50834B68D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuValidator", "..\..\Code\SudokuValidator\SudokuValidator.csproj", "{DF22CC81-1C0C-4311-B5FD-0F7C42091D32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SudokuValidator", "..\..\Code\SudokuValidator\SudokuValidator.csproj", "{DF22CC81-1C0C-4311-B5FD-0F7C42091D32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Defibrillators", "..\..\Code\Defibrillators\Defibrillators.csproj", "{D4A814B1-38B8-4E2B-A413-1508272F526C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Defibrillators", "..\..\Code\Defibrillators\Defibrillators.csproj", "{D4A814B1-38B8-4E2B-A413-1508272F526C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1DSpreadsheet", "..\..\Code\1DSpreadsheet\1DSpreadsheet.csproj", "{E1F13A90-461D-414E-8006-7AF572CA63DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{D4A814B1-38B8-4E2B-A413-1508272F526C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4A814B1-38B8-4E2B-A413-1508272F526C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4A814B1-38B8-4E2B-A413-1508272F526C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1F13A90-461D-414E-8006-7AF572CA63DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1F13A90-461D-414E-8006-7AF572CA63DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1F13A90-461D-414E-8006-7AF572CA63DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1F13A90-461D-414E-8006-7AF572CA63DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

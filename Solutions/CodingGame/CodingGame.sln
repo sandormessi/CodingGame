@@ -27,11 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SudokuValidator", "..\..\Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Defibrillators", "..\..\Code\Defibrillators\Defibrillators.csproj", "{D4A814B1-38B8-4E2B-A413-1508272F526C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1DSpreadsheet", "..\..\Code\1DSpreadsheet\1DSpreadsheet.csproj", "{E1F13A90-461D-414E-8006-7AF572CA63DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1DSpreadsheet", "..\..\Code\1DSpreadsheet\1DSpreadsheet.csproj", "{E1F13A90-461D-414E-8006-7AF572CA63DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicGates", "..\..\Code\LogicGates\LogicGates.csproj", "{AA8731C3-41FC-4793-8D73-0FB80E3ED891}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicGates", "..\..\Code\LogicGates\LogicGates.csproj", "{AA8731C3-41FC-4793-8D73-0FB80E3ED891}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeathFirstSearchEpisode1", "..\..\Code\DeathFirstSearchEpisode1\DeathFirstSearchEpisode1.csproj", "{082F2212-AE36-4F67-A940-2CA8FCA9AEEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeathFirstSearchEpisode1", "..\..\Code\DeathFirstSearchEpisode1\DeathFirstSearchEpisode1.csproj", "{082F2212-AE36-4F67-A940-2CA8FCA9AEEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeathFirstSearchEpisode2", "..\..\Code\DeathFirstSearchEpisode2\DeathFirstSearchEpisode2.csproj", "{9B780824-34B6-4552-B665-C88BBC3DF3FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{082F2212-AE36-4F67-A940-2CA8FCA9AEEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{082F2212-AE36-4F67-A940-2CA8FCA9AEEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{082F2212-AE36-4F67-A940-2CA8FCA9AEEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B780824-34B6-4552-B665-C88BBC3DF3FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B780824-34B6-4552-B665-C88BBC3DF3FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B780824-34B6-4552-B665-C88BBC3DF3FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B780824-34B6-4552-B665-C88BBC3DF3FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

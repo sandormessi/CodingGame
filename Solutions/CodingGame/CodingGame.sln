@@ -33,7 +33,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicGates", "..\..\Code\Lo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeathFirstSearchEpisode1", "..\..\Code\DeathFirstSearchEpisode1\DeathFirstSearchEpisode1.csproj", "{082F2212-AE36-4F67-A940-2CA8FCA9AEEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeathFirstSearchEpisode2", "..\..\Code\DeathFirstSearchEpisode2\DeathFirstSearchEpisode2.csproj", "{9B780824-34B6-4552-B665-C88BBC3DF3FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeathFirstSearchEpisode2", "..\..\Code\DeathFirstSearchEpisode2\DeathFirstSearchEpisode2.csproj", "{9B780824-34B6-4552-B665-C88BBC3DF3FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "War", "..\..\Code\War\War.csproj", "{B88F3240-8914-497F-A638-3C48F764F1F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{9B780824-34B6-4552-B665-C88BBC3DF3FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B780824-34B6-4552-B665-C88BBC3DF3FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B780824-34B6-4552-B665-C88BBC3DF3FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B88F3240-8914-497F-A638-3C48F764F1F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B88F3240-8914-497F-A638-3C48F764F1F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B88F3240-8914-497F-A638-3C48F764F1F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B88F3240-8914-497F-A638-3C48F764F1F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

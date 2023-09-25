@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeathFirstSearchEpisode1", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeathFirstSearchEpisode2", "..\..\Code\DeathFirstSearchEpisode2\DeathFirstSearchEpisode2.csproj", "{9B780824-34B6-4552-B665-C88BBC3DF3FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "War", "..\..\Code\War\War.csproj", "{B88F3240-8914-497F-A638-3C48F764F1F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "War", "..\..\Code\War\War.csproj", "{B88F3240-8914-497F-A638-3C48F764F1F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoNotPanicEpisode1", "..\..\Code\DoNotPanicEpisode1\DoNotPanicEpisode1.csproj", "{C189E63C-AA1D-43F6-862A-C6AE9EB432D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,10 @@ Global
 		{B88F3240-8914-497F-A638-3C48F764F1F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B88F3240-8914-497F-A638-3C48F764F1F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B88F3240-8914-497F-A638-3C48F764F1F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C189E63C-AA1D-43F6-862A-C6AE9EB432D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C189E63C-AA1D-43F6-862A-C6AE9EB432D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C189E63C-AA1D-43F6-862A-C6AE9EB432D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C189E63C-AA1D-43F6-862A-C6AE9EB432D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

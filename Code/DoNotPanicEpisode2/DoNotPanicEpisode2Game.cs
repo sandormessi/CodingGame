@@ -22,9 +22,9 @@ internal class DoNotPanicEpisode2Game
 
       public int? ExitPosition { get; set; }
 
-      public int ElevatorToUse { get; set; } = int.MinValue;
+      public int TargetPosition { get; set; } = int.MinValue;
 
-      public int DistanceFromGenerator { get; set; } = int.MinValue;
+      public double SaveAmount { get; set; } = int.MinValue;
    }
 
    private static void Main()
@@ -64,13 +64,13 @@ internal class DoNotPanicEpisode2Game
 
          if (isFirstTurn)
          {
-            FindElevatorsToUse(floors, nbAdditionalElevators, clonePos);
+            FindTargetPositions(floors, nbAdditionalElevators, clonePos);
             isFirstTurn = false;
          }
 
          var direction = Enum.Parse<Directions>(directionString, true);
 
-         int targetPosition = CalculateTargetPosition(floors, actualFloor, clonePos);
+         int targetPosition = actualFloor.TargetPosition;
          if (targetPosition == clonePos)
          {
             if (!actualFloor.Elevators.Contains(targetPosition) || (!actualFloor.Elevators.Any() && !actualFloor.ExitPosition.HasValue))
@@ -86,7 +86,7 @@ internal class DoNotPanicEpisode2Game
          }
 
          Directions directionOfExit = CalculateDirectionOfDesiredMovement(targetPosition, clonePos);
-         if (directionOfExit != direction && !IsBlockedCloneInDirection(actualFloor, direction, blockedClones, clonePos))
+         if ((directionOfExit != direction) && !IsBlockedCloneInDirection(actualFloor, direction, blockedClones, clonePos))
          {
             Block(blockedClones, actualFloor, clonePos);
             continue;
@@ -96,12 +96,13 @@ internal class DoNotPanicEpisode2Game
       }
    }
 
-   private static void FindElevatorsToUse(List<Floor> floors, int elevatorsCanBeBuilt, int generatorPosition)
+   private static void FindTargetPositions(List<Floor> floors, int elevatorsCanBeBuilt, int generatorPosition)
    {
       Floor exitFloor = floors[^1];
       int targetPosition = exitFloor.ExitPosition.Value;
-      exitFloor.ElevatorToUse = targetPosition;
+      exitFloor.TargetPosition = targetPosition;
 
+      double actualMedian = targetPosition;
       for (int i = floors.Count - 2; i >= 0; i--)
       {
          Floor actualFloor = floors[i];
@@ -113,74 +114,105 @@ internal class DoNotPanicEpisode2Game
             }
 
             elevatorsCanBeBuilt--;
-            actualFloor.ElevatorToUse = targetPosition;
+            actualFloor.TargetPosition = targetPosition;
          }
          else
          {
             int actualFloorElevatorToUse = actualFloor.Elevators.MinBy(x => Math.Abs(x - targetPosition));
-            int distanceFromGenerator = Math.Abs(generatorPosition - actualFloorElevatorToUse);
-            actualFloor.DistanceFromGenerator = distanceFromGenerator;
-            actualFloor.ElevatorToUse = actualFloorElevatorToUse;
+
+            double distanceFromMedian = Math.Abs(actualMedian - actualFloorElevatorToUse);
+            actualFloor.SaveAmount = distanceFromMedian;
+
+            actualFloor.TargetPosition = actualFloorElevatorToUse;
          }
 
-         targetPosition = actualFloor.ElevatorToUse;
+         actualMedian = (double)targetPosition / actualFloor.TargetPosition;
+
+         targetPosition = actualFloor.TargetPosition;
       }
 
       Floor firstFloor = floors[0];
       if (firstFloor.Elevators.Count > 1)
       {
-         var elevatorsOnTheLeft = firstFloor.Elevators.Where(x => x < generatorPosition).ToArray();
-         var elevatorsOnTheRight = firstFloor.Elevators.Where(x => x > generatorPosition).ToArray();
+         int[] elevatorsOnTheLeft = firstFloor.Elevators.Where(x => x < generatorPosition).ToArray();
+         int[] elevatorsOnTheRight = firstFloor.Elevators.Where(x => x > generatorPosition).ToArray();
 
          if (elevatorsOnTheLeft.Any() && elevatorsOnTheRight.Any())
          {
-            var first = elevatorsOnTheLeft.MinBy(x => Math.Abs(x - generatorPosition));
-            var second = elevatorsOnTheRight.MinBy(x => Math.Abs(x - generatorPosition));
+            int first = elevatorsOnTheLeft.Max();
+            int second = elevatorsOnTheRight.Min();
 
-            var stepsForFirst = Math.Abs(first - generatorPosition) + 3;
-            var stepsForSecond = Math.Abs(second - generatorPosition);
+            int stepsForFirst = Math.Abs(first - generatorPosition) + /* Plus 3 steps due to clone generator */ 3;
+            int stepsForSecond = Math.Abs(second - generatorPosition);
 
             if (stepsForFirst < stepsForSecond)
             {
-               firstFloor.ElevatorToUse = first;
+               firstFloor.TargetPosition = first;
             }
             else
             {
-               firstFloor.ElevatorToUse = second;
+               firstFloor.TargetPosition = second;
             }
          }
       }
 
-      var orderedFloors = floors.OrderByDescending(x => x.DistanceFromGenerator).ToList();
-      for (var i = elevatorsCanBeBuilt; i > 0; i--)
-      {
-         var greatestDistance = orderedFloors.First();
-         if (greatestDistance.Level == 0)
-         {
-            greatestDistance.ElevatorToUse = generatorPosition;
-         }
-         else
-         {
-            if (greatestDistance.Level > 0)
-            {
-               var previousLevel = floors[greatestDistance.Level - 1];
-               greatestDistance.ElevatorToUse = previousLevel.ElevatorToUse;
-            }
-            else
-            {
-               var nextLevel = floors[greatestDistance.Level + 1];
-               greatestDistance.ElevatorToUse = nextLevel.ElevatorToUse;
-            }
-         }
-       
-         
-         orderedFloors.RemoveAt(0);
-      }
+      FindPositionForElevatorsToBuild(floors, elevatorsCanBeBuilt, generatorPosition);
 
       foreach (Floor floor in floors)
       {
-         Console.Error.WriteLine($"Floor {floor.Level}, TargetPosition: {floor.ElevatorToUse}.");
+         Console.Error.WriteLine($"Floor {floor.Level}, TargetPosition: {floor.TargetPosition}.");
       }
+   }
+
+   private static void FindPositionForElevatorsToBuild(IReadOnlyList<Floor> floors, int elevatorsCanBeBuilt, int generatorPosition)
+   {
+      if (elevatorsCanBeBuilt <= 0)
+      {
+         return;
+      }
+
+      // TODO if elevator is built on a level where other elevators are then other levels need to be checked again (TargetPosition)
+
+      IReadOnlyList<Floor> orderedFloors = SelectFloorsForBuildingElevator(floors).Take(elevatorsCanBeBuilt).OrderByDescending(x => x.Level).ToArray();
+      foreach (Floor orderedFloor in orderedFloors)
+      {
+         if (orderedFloor.Level == 0)
+         {
+            orderedFloor.TargetPosition = generatorPosition;
+         }
+         else
+         {
+            Floor previousLevel = floors[orderedFloor.Level + 1];
+            orderedFloor.TargetPosition = previousLevel.TargetPosition;
+
+            int nextLevel = orderedFloor.Level - 1;
+            if (orderedFloors.All(x => x.Level != nextLevel))
+            {
+               Floor nextFloor = floors.First(x => x.Level == nextLevel);
+               if (nextFloor.Elevators.Any())
+               {
+                  nextFloor.TargetPosition = nextFloor.Elevators.MinBy(x => Math.Abs(x - orderedFloor.TargetPosition));
+               }
+               Console.Error.WriteLine($"Neighbor Floor '{nextFloor.Level}' TargetPosition has been set to: {nextFloor.TargetPosition}.");
+            }
+
+            Console.Error.WriteLine($"Floor '{orderedFloor.Level}' TargetPosition has been set to: {orderedFloor.TargetPosition}.");
+         }
+      }
+   }
+
+   private static IEnumerable<Floor> SelectFloorsForBuildingElevator(IReadOnlyList<Floor> floors)
+   {
+      for (int i = floors.Count - 2; i >= 0; i--)
+      {
+         Floor previousFloor = floors[i + 1];
+         Floor actualFloor = floors[i];
+
+         var saveAmount = Math.Abs(actualFloor.TargetPosition - previousFloor.TargetPosition);
+         actualFloor.SaveAmount = saveAmount;
+      }
+
+      return floors.OrderByDescending(x => x.SaveAmount);
    }
 
    private static List<Floor> GetFloors(int nbElevators, int exitFloor, int exitPos)
@@ -205,11 +237,6 @@ internal class DoNotPanicEpisode2Game
       }
 
       return floors;
-   }
-
-   private static int CalculateTargetPosition(IList<Floor> floors, Floor actualFloor, int clonePos)
-   {
-      return actualFloor.ElevatorToUse;
    }
 
    private static void BuildElevator(Floor actualFloor, int clonePos)

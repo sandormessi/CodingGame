@@ -41,7 +41,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoNotPanicEpisode1", "..\..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoNotPanicEpisode2", "..\..\Code\DoNotPanicEpisode2\DoNotPanicEpisode2.csproj", "{45384651-03BA-4E23-A5BC-D55A106F8281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollerCoaster", "..\..\Code\RollerCoaster\RollerCoaster.csproj", "{BAA4590B-7219-4C67-9580-40D45AEA300F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RollerCoaster", "..\..\Code\RollerCoaster\RollerCoaster.csproj", "{BAA4590B-7219-4C67-9580-40D45AEA300F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicCountOfNumbers", "..\..\Code\MagicCountOfNumbers\MagicCountOfNumbers.csproj", "{81F8ABE3-DF6B-437B-86D4-63F3763012EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +131,10 @@ Global
 		{BAA4590B-7219-4C67-9580-40D45AEA300F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAA4590B-7219-4C67-9580-40D45AEA300F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAA4590B-7219-4C67-9580-40D45AEA300F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81F8ABE3-DF6B-437B-86D4-63F3763012EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81F8ABE3-DF6B-437B-86D4-63F3763012EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81F8ABE3-DF6B-437B-86D4-63F3763012EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81F8ABE3-DF6B-437B-86D4-63F3763012EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

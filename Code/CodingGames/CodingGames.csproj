@@ -10,7 +10,6 @@
 		<Folder Include="CodeGolf\" />
 		<Folder Include="BotProgramming\" />
 		<Folder Include="Optimization\" />
-		<Folder Include="Puzzles\Hard\" />
 		<Folder Include="Puzzles\Medium\" />
 		<Folder Include="Puzzles\Easy\" />
 	</ItemGroup>

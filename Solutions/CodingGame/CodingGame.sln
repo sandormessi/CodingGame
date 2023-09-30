@@ -45,7 +45,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RollerCoaster", "..\..\Code
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicCountOfNumbers", "..\..\Code\MagicCountOfNumbers\MagicCountOfNumbers.csproj", "{81F8ABE3-DF6B-437B-86D4-63F3763012EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheGreatestNumber", "..\..\Code\TheGreatestNumber\TheGreatestNumber.csproj", "{2D3E6342-790A-499B-AB98-49D455A93D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGreatestNumber", "..\..\Code\TheGreatestNumber\TheGreatestNumber.csproj", "{2D3E6342-790A-499B-AB98-49D455A93D93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingGames", "..\..\Code\CodingGames\CodingGames.csproj", "{C6EA9481-95E0-405F-89B5-22E65A587720}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +143,10 @@ Global
 		{2D3E6342-790A-499B-AB98-49D455A93D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D3E6342-790A-499B-AB98-49D455A93D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D3E6342-790A-499B-AB98-49D455A93D93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6EA9481-95E0-405F-89B5-22E65A587720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6EA9481-95E0-405F-89B5-22E65A587720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6EA9481-95E0-405F-89B5-22E65A587720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6EA9481-95E0-405F-89B5-22E65A587720}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

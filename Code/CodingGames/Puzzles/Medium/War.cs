@@ -95,7 +95,7 @@ public class War
          }
          else
          {
-            if (!War(cardsOfPlayer1, cardsOfPlayer2, takenCardsFromPlayer1, takenCardsFromPlayer2))
+            if (!PerformWar(cardsOfPlayer1, cardsOfPlayer2, takenCardsFromPlayer1, takenCardsFromPlayer2))
             {
                break;
             }
@@ -130,7 +130,7 @@ public class War
       return Console.ReadLine() ?? throw new InvalidOperationException("There is no input.");
    }
 
-   private static bool War(List<Card> cardsOfPlayer1, List<Card> cardsOfPlayer2, List<Card> takenCardsFromPlayer1, List<Card> takenCardsFromPlayer2)
+   private static bool PerformWar(List<Card> cardsOfPlayer1, List<Card> cardsOfPlayer2, List<Card> takenCardsFromPlayer1, List<Card> takenCardsFromPlayer2)
    {
       const int cardCount = 4;
 

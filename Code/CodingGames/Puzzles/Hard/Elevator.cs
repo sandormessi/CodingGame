@@ -46,17 +46,30 @@ public class Elevator
       DebugMessage($"Floors Down: {floorsDown}");
       DebugMessage($"Building height: {buildingHeight}");
 
+      List<int> floorsSoFar = new() { actualFloor };
+
       while (actualFloor != targetFloor)
       {
+         int newFloor;
          if (targetFloor > actualFloor)
          {
-            actualFloor = GoUp(actualFloor, floorsUp, buildingHeight);
+            newFloor = GoUp(actualFloor, floorsUp, buildingHeight);
+
+            if (actualFloor == newFloor)
+            {
+               newFloor = GoDown(actualFloor, floorsDown);
+            }
 
             DebugMessage($"Go up: actual floor: {actualFloor}");
          }
          else if (targetFloor < actualFloor)
          {
-            actualFloor = GoDown(actualFloor, floorsDown);
+            newFloor = GoDown(actualFloor, floorsDown);
+
+            if (actualFloor == newFloor)
+            {
+               newFloor = GoUp(actualFloor, floorsUp, buildingHeight);
+            }
 
             DebugMessage($"Go down: actual floor: {actualFloor}");
          }
@@ -64,6 +77,15 @@ public class Elevator
          {
             throw new InvalidOperationException("Invalid algorithm.");
          }
+
+         actualFloor = newFloor;
+
+         if (floorsSoFar.Contains(actualFloor))
+         {
+            Console.WriteLine("IMPOSSIBLE");
+            return;
+         }
+         floorsSoFar.Add(actualFloor);
 
          count++;
       }

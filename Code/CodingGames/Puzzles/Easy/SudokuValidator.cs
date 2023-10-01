@@ -1,7 +1,10 @@
-﻿
-public class SudokuValidatorGame
+﻿namespace CodingGames.Puzzles.Easy;
+
+public class SudokuValidator
 {
-  public static void Main()
+   #region Public Methods and Operators
+
+   public static void Main()
    {
       List<int[]> grid = new();
       for (var i = 0; i < 9; i++)
@@ -41,13 +44,16 @@ public class SudokuValidatorGame
       WriteAnswer(true);
    }
 
+   #endregion
+
+   #region Methods
+
    private static string? ReadInput()
    {
       return Console.ReadLine();
    }
 
-   private static bool ValidateGridUniqueness(int startX, int startY, int endX,
-      int endY, IReadOnlyList<int[]> grid)
+   private static bool ValidateGridUniqueness(int startX, int startY, int endX, int endY, IReadOnlyList<int[]> grid)
    {
       for (int i = startX; i <= endX; i++)
       {
@@ -82,8 +88,7 @@ public class SudokuValidatorGame
       return line.Distinct().Count() == line.Count;
    }
 
-   private static bool ValidateSubGrid(int startX, int startY, int endX,
-      int endY, IReadOnlyList<int[]> grid)
+   private static bool ValidateSubGrid(int startX, int startY, int endX, int endY, IReadOnlyList<int[]> grid)
    {
       List<int> subGridNumbers = new(9);
       for (int i = startY; i <= endY; i++)
@@ -107,4 +112,6 @@ public class SudokuValidatorGame
    {
       Console.WriteLine(isValid.ToString().ToLower());
    }
+
+   #endregion
 }

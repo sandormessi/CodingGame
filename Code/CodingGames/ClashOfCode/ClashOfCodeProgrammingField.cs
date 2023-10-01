@@ -4,7 +4,14 @@ using System.Text;
 
 public class ClashOfCodeProgrammingField
 {
+   #region Constants and Fields
+
    private static char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+
+   #endregion
+
+   #region Enums
+
    private enum Operation
    {
       Add,
@@ -15,6 +22,11 @@ public class ClashOfCodeProgrammingField
 
       Divide
    }
+
+   #endregion
+
+   #region Methods
+
    private static IReadOnlyList<string> ChangeCharacters(IEnumerable<string> strings, IReadOnlyList<CharacterPair> characterPairs)
    {
       List<string> texts = new(16);
@@ -46,6 +58,7 @@ public class ClashOfCodeProgrammingField
 
       return texts;
    }
+
    private static IReadOnlyList<int> CountItemGroups<TItem>(IReadOnlyList<TItem> list, TItem targetItem)
       where TItem : notnull
    {
@@ -67,6 +80,7 @@ public class ClashOfCodeProgrammingField
 
       return counts;
    }
+
    private static IReadOnlyList<long> DivisorsOf(long n)
    {
       List<long> divisors = new();
@@ -80,12 +94,14 @@ public class ClashOfCodeProgrammingField
 
       return divisors;
    }
+
    private static long Factorial(int i)
    {
       if (i <= 1)
          return 1;
       return i * Factorial(i - 1);
    }
+
    private static long FactorialDivision(int topFactorial, int divisorFactorial)
    {
       long result = 1;
@@ -96,30 +112,42 @@ public class ClashOfCodeProgrammingField
 
       return result;
    }
+
    private static IEnumerable<int> GetDigits(long N)
    {
       return N.ToString().Take(4).Select(x => int.Parse(x.ToString()));
    }
+
    private static int GetNumber(IEnumerable<int> digits)
    {
       return int.Parse(digits.Select(x => x.ToString()).Aggregate((x1, x2) => x1 + x2));
    }
+
    private static bool IsPrime(int n)
    {
       return DivisorsOf(n).Count == 2;
    }
+
    private static long nCr(int n, int r)
    {
       return nPr(n, r) / Factorial(r);
    }
+
    private static long nPr(int n, int r)
    {
       return FactorialDivision(n, n - r);
    }
+
+   private static string PrintValues<T>(IEnumerable<T> values, string separator)
+   {
+      return values.Select(x => x.ToString()).Aggregate((x1, x2) => $"{x1}{separator}{x2}");
+   }
+
    private static string ReadInput()
    {
       return Console.ReadLine() ?? throw new InvalidOperationException("There is not input.");
    }
+
    private static char SwapCase(char c)
    {
       if (char.IsUpper(c))
@@ -129,6 +157,7 @@ public class ClashOfCodeProgrammingField
 
       return char.ToUpper(c);
    }
+
    private static void SwapCaseInStringBuilder(StringBuilder stringBuilder)
    {
       for (var i = 0; i < stringBuilder.Length; i++)
@@ -136,24 +165,27 @@ public class ClashOfCodeProgrammingField
          stringBuilder[i] = SwapCase(stringBuilder[i]);
       }
    }
+
+   #endregion
+
    private sealed class CharacterPair
    {
+      #region Constructors and Destructors
+
       public CharacterPair(char character1, char character2)
       {
          Character1 = character1;
          Character2 = character2;
       }
 
+      #endregion
+
+      #region Public Properties
+
       public char Character1 { get; }
+
       public char Character2 { get; }
+
+      #endregion
    }
-   private static string PrintValues<T>(IEnumerable<T> values, string separator)
-   {
-      return values.Select(x => x.ToString()).Aggregate((x1, x2) => $"{x1}{separator}{x2}");
-   }
-
-
-
-
-  
 }

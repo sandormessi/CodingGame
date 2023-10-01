@@ -2,31 +2,7 @@
 
 public class Elevator
 {
-   private static int GoDown(int actualFloor, int floorsDown)
-   {
-      var newFloor = actualFloor - floorsDown;
-      if (newFloor < 1)
-      {
-         return actualFloor;
-      }
-
-      return newFloor;
-   }
-
-   private static int GoUp(int actualFloor, int floorsUp, int buildingHeight)
-   {
-      var newFloor = actualFloor + floorsUp;
-      if (newFloor > buildingHeight)
-      {
-         return actualFloor;
-      }
-
-      return newFloor;
-   }
-   private static void DebugMessage<T>(T message)
-   {
-      Console.Error.WriteLine(message);
-   }
+   #region Public Methods and Operators
 
    public static void Main()
    {
@@ -85,6 +61,7 @@ public class Elevator
             Console.WriteLine("IMPOSSIBLE");
             return;
          }
+
          floorsSoFar.Add(actualFloor);
 
          count++;
@@ -100,8 +77,41 @@ public class Elevator
       }
    }
 
+   #endregion
+
+   #region Methods
+
+   private static void DebugMessage<T>(T message)
+   {
+      Console.Error.WriteLine(message);
+   }
+
+   private static int GoDown(int actualFloor, int floorsDown)
+   {
+      var newFloor = actualFloor - floorsDown;
+      if (newFloor < 1)
+      {
+         return actualFloor;
+      }
+
+      return newFloor;
+   }
+
+   private static int GoUp(int actualFloor, int floorsUp, int buildingHeight)
+   {
+      var newFloor = actualFloor + floorsUp;
+      if (newFloor > buildingHeight)
+      {
+         return actualFloor;
+      }
+
+      return newFloor;
+   }
+
    private static string ReadInput()
    {
       return Console.ReadLine() ?? throw new InvalidOperationException("There is not input.");
    }
+
+   #endregion
 }

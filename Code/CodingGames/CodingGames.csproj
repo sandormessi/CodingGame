@@ -6,11 +6,6 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
-		<Folder Include="Events\" />
-		<Folder Include="CodeGolf\" />
 		<Folder Include="BotProgramming\" />
-		<Folder Include="Optimization\" />
-		<Folder Include="Puzzles\Medium\" />
-		<Folder Include="Puzzles\Easy\" />
 	</ItemGroup>
 </Project>

@@ -1,16 +1,14 @@
 ﻿namespace CodingGames.ClashOfCode;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 public class ClashOfCodeProgrammingField
 {
-   #region Constants and Fields
-
    private static char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
-
-   #endregion
-
-   #region Enums
 
    private enum Operation
    {
@@ -22,10 +20,6 @@ public class ClashOfCodeProgrammingField
 
       Divide
    }
-
-   #endregion
-
-   #region Methods
 
    private static IReadOnlyList<string> ChangeCharacters(IEnumerable<string> strings, IReadOnlyList<CharacterPair> characterPairs)
    {
@@ -81,20 +75,6 @@ public class ClashOfCodeProgrammingField
       return counts;
    }
 
-   private static IReadOnlyList<long> DivisorsOf(long n)
-   {
-      List<long> divisors = new();
-      for (long i = 1; i <= n; i++)
-      {
-         if (n % i == 0)
-         {
-            divisors.Add(i);
-         }
-      }
-
-      return divisors;
-   }
-
    private static long Factorial(int i)
    {
       if (i <= 1)
@@ -113,19 +93,9 @@ public class ClashOfCodeProgrammingField
       return result;
    }
 
-   private static IEnumerable<int> GetDigits(long N)
-   {
-      return N.ToString().Take(4).Select(x => int.Parse(x.ToString()));
-   }
-
    private static int GetNumber(IEnumerable<int> digits)
    {
       return int.Parse(digits.Select(x => x.ToString()).Aggregate((x1, x2) => x1 + x2));
-   }
-
-   private static bool IsPrime(int n)
-   {
-      return DivisorsOf(n).Count == 2;
    }
 
    private static long nCr(int n, int r)
@@ -136,11 +106,6 @@ public class ClashOfCodeProgrammingField
    private static long nPr(int n, int r)
    {
       return FactorialDivision(n, n - r);
-   }
-
-   private static string PrintValues<T>(IEnumerable<T> values, string separator)
-   {
-      return values.Select(x => x.ToString()).Aggregate((x1, x2) => $"{x1}{separator}{x2}");
    }
 
    private static string ReadInput()
@@ -166,26 +131,98 @@ public class ClashOfCodeProgrammingField
       }
    }
 
-   #endregion
-
    private sealed class CharacterPair
    {
-      #region Constructors and Destructors
-
       public CharacterPair(char character1, char character2)
       {
          Character1 = character1;
          Character2 = character2;
       }
 
-      #endregion
-
-      #region Public Properties
-
       public char Character1 { get; }
 
       public char Character2 { get; }
+   }
 
-      #endregion
+  
+   private static IReadOnlyList<long> DivisorsOf(long n)
+   {
+      List<long> divisors = new();
+      for (long i = 1; i <= n; i++)
+      {
+         if (n % i == 0)
+         {
+            divisors.Add(i);
+         }
+      }
+
+      return divisors;
+   }
+
+   private static bool IsPrime(int n)
+   {
+      return DivisorsOf(n).Count == 2;
+   }
+
+   private static string PrintValues<T>(IEnumerable<T> values, string separator)
+   {
+      return string.Join(separator, values);
+   }
+
+   private static IEnumerable<int> GetDigits(long N)
+   {
+      return N.ToString().Select(x => int.Parse(x.ToString()));
+   }
+
+
+
+
+
+
+   static void Main(string[] args)
+   {
+      string s = Console.ReadLine();
+      Console.Error.WriteLine(s);
+      try
+      {
+         var split = s.Split(' ');
+
+         var number1 = double.Parse(split[0]);
+         var number2 = double.Parse(split[1]);
+
+         double result = 0;
+         switch (split[2])
+         {
+            case "+":
+               result = number1 + number2;
+               break;
+            case "-":
+               result = number1 - number2;
+               break;
+            case "*":
+               result = number1 * number2;
+               break;
+            case "/":
+               if (number2 == 0D)
+               {
+                  Console.WriteLine("DIVISION BY ZERO");
+                  return;
+               }
+               result = number1 / number2;
+
+               break;
+            default:
+               Console.WriteLine("INVALID EXPRESSION");
+               return;
+         }
+
+         result = Math.Round(result, 2);
+
+         Console.WriteLine($"{result:N2}");
+      }
+      catch 
+      {
+         Console.WriteLine("INVALID EXPRESSION");
+      }
    }
 }

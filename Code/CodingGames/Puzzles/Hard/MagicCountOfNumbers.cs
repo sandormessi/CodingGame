@@ -1,5 +1,8 @@
 ﻿namespace CodingGames.Puzzles.Hard;
 
+using System;
+using System.Collections.Generic;
+
 public class MagicCountOfNumbers
 {
    #region Public Methods and Operators

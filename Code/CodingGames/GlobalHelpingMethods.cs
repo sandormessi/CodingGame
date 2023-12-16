@@ -1,5 +1,7 @@
 ﻿namespace CodingGames;
 
+using System;
+
 internal class GlobalHelpingMethods
 {
    #region Methods

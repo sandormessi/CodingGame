@@ -1,5 +1,7 @@
 ﻿namespace CodingGames.Puzzles.Easy;
 
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 public class MarsLanderEpisode1

@@ -1,6 +1,9 @@
 ﻿namespace CodingGames.CodeGolf;
 
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 public class NetworkCablingGame
 {

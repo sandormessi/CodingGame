@@ -1,5 +1,9 @@
 ﻿namespace CodingGames.Puzzles.Easy;
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+
 public class MimeType
 {
    #region Methods

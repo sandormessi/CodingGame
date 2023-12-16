@@ -1,5 +1,9 @@
 ﻿namespace CodingGames.Puzzles.Hard;
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+
 public class RollerCoaster
 {
    #region Constants and Fields

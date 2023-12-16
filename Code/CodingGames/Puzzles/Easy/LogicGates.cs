@@ -1,5 +1,9 @@
 ﻿namespace CodingGames.Puzzles.Easy;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 public class LogicGates
 {
    #region Constants and Fields

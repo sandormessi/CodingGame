@@ -1,5 +1,8 @@
 ﻿namespace CodingGames.Puzzles.Medium;
 
+using System;
+using System.Collections.Generic;
+
 public class ConwaySequence
 {
    #region Public Methods and Operators

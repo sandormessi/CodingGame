@@ -1,5 +1,7 @@
 ﻿namespace CodingGames.Puzzles.Easy;
 
+using System;
+
 public class EuclidAlgorithm
 {
    #region Public Methods and Operators

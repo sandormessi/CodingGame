@@ -1,5 +1,9 @@
 ﻿namespace CodingGames.Puzzles.Hard;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 internal class DoNotPanicEpisode2
 {
    #region Enums

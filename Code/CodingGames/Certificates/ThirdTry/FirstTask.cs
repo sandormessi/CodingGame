@@ -1,5 +1,6 @@
 ﻿namespace CodingGames.Certificates.ThirdTry;
 
+using System;
 using System.Text;
 
 public class FirstTask

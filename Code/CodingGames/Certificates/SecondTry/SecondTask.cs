@@ -1,5 +1,7 @@
 ﻿namespace CodingGames.Certificates.SecondTry;
 
+using System;
+
 internal class SecondTask
 {
    #region Public Methods and Operators

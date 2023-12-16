@@ -1,5 +1,8 @@
 ﻿namespace CodingGames.Puzzles.Hard;
 
+using System;
+using System.Collections.Generic;
+
 public class Elevator
 {
    #region Public Methods and Operators

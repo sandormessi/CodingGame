@@ -1,5 +1,9 @@
 ﻿namespace CodingGames.Optimization;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 public class _2048
 {
    #region Constants and Fields

@@ -1,5 +1,9 @@
 ﻿namespace CodingGames.Certificates.SecondTry;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 internal class FirstTask
 {
    #region Public Methods and Operators

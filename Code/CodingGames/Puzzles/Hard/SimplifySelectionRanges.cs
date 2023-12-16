@@ -1,5 +1,9 @@
 ﻿namespace CodingGames.Puzzles.Hard;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 public class SimplifySelectionRanges
 {
    #region Public Methods and Operators

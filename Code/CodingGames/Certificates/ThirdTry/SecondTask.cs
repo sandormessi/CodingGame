@@ -1,5 +1,8 @@
 ﻿namespace CodingGames.Certificates.ThirdTry;
 
+using System;
+using System.Linq;
+
 public class SecondTask
 {
    public static void Main()

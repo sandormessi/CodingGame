@@ -1,5 +1,8 @@
 ﻿namespace CodingGames.Certificates.SecondTry;
 
+using System;
+using System.Collections.Generic;
+
 internal class SixthTask
 {
    #region Public Methods and Operators

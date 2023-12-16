@@ -1,5 +1,9 @@
 ﻿namespace CodingGames.Puzzles.Medium;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 public class ShadowOfTheKnightEpisode1
 {
    #region Enums

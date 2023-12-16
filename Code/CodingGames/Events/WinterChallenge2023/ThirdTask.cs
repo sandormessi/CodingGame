@@ -1,5 +1,7 @@
 ﻿namespace CodingGames.Events.WinterChallenge2023;
 
+using System.Collections.Generic;
+
 internal class ThirdTask
 {
    #region Public Methods and Operators

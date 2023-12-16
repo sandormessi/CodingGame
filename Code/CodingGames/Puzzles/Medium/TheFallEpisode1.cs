@@ -1,5 +1,9 @@
 ﻿namespace CodingGames.Puzzles.Medium;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 public class TheFallEpisode1
 {
    #region Constants and Fields
